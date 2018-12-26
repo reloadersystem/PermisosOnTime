@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    int MY_PERMISSIONS_REQUEST_WRITE_STORAGE;
+    int MY_PERMISSIONS_REQUEST_WRITE_STORAGE=1;
     int WRITE_EXTERNAL_STORAGE_DATA=100;
 
     @Override
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             //pedir  permiso si es primera vez
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE_DATA);
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_WRITE_STORAGE);
 
 
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE_DATA);
+                        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_WRITE_STORAGE);
 
                         }
 
@@ -90,13 +90,14 @@ public class MainActivity extends AppCompatActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
+                   Toast.makeText(this, "Permisos Otorgados Correctamente", Toast.LENGTH_SHORT).show();
 
                 } else {
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
+                    //deshabilitar permiso
+
                 }
                 return;
             }
